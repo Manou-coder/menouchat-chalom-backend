@@ -24,6 +24,8 @@ app.use('/files', express.static(`${process.cwd()}/files`));
 
 app.use('/images', express.static(`${process.cwd()}/images`));
 
+app.use('/horaires', express.static(`${process.cwd()}/horaires`));
+
 app.use('/admin', adminRoutes);
 
 app.use("/api/zmanim", zmanRoutes);
@@ -31,13 +33,6 @@ app.use("/api/zmanim", zmanRoutes);
 app.get('/', (req, res, next) => {
     res.redirect('/admin')
 })
-
-const hebcal = require('./hebcal3.js');
-const zmanJerusalem = require('./cities/zmanim')
-// const zmanimShabat = require('./cities/zmanim-chabat')
-
-// console.log(zmanJerusalem.zmanShabatJerusalem);
-// console.log(hebcal);
 
 let IMG;
 
@@ -51,5 +46,51 @@ app.get('/admin/getdisplayImg', (req, res, next) => {
     // console.log(req.body);
     res.json(IMG)
 })
+
+// ESSAI MULTER
+
+const multer = require("multer");
+
+const MIME_TYPES = {
+    'image/jpg': 'jpg',
+    'image/jpeg': 'jpg',
+    'image/png': 'png',
+    'application/pdf': 'pdf'
+  };
+  
+  const storage = multer.diskStorage({
+    destination: (req, file, callback) => {
+      callback(null, 'files1');
+    },
+    filename: (req, file, callback) => {
+      const name = file.originalname.split(' ').join('_');
+      const extension = MIME_TYPES[file.mimetype];
+      callback(null, name + Date.now() + '.' + extension);
+    }
+  });
+
+
+//   app.post("/admin/pdf1", multer({storage: storage}).array('files'), uploadFiles);
+
+    function uploadFiles(req, res) {
+        console.log(req.body);
+        console.log(req.files);
+        res.json({ message: "Successfully uploaded files" });
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 module.exports = app;

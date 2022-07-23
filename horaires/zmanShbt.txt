@@ -1,0 +1,6 @@
+{
+  "shirAshirim": "00:00",
+  "minchaErevShbt": "00:00",
+  "shaharitShbt": "00:00",
+  "minchaShbt": "00:00"
+}
