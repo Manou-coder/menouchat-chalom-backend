@@ -23,6 +23,14 @@ module.exports = (req, res, next) => {
       fs.rename(oldPath, newPath, (err) => {
         if (err) throw err;
         console.log("fichier renommé dans './files'");
+
+        //save the name of file at the db
+        let objectImage = fs.readFileSync("./db/images-display.txt");
+        objectImage = JSON.parse(objectImage)
+        objectImage.imageDisplay[numberOfImage-1] = nameOfFile;
+        objectImage = JSON.stringify(objectImage, null, 2);
+        fs.writeFileSync("./db/images-display.txt", objectImage)
+
       });
       next();
     }

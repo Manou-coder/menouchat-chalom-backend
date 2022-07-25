@@ -24,7 +24,7 @@ app.use('/files', express.static(`${process.cwd()}/files`));
 
 app.use('/images', express.static(`${process.cwd()}/images`));
 
-app.use('/horaires', express.static(`${process.cwd()}/horaires`));
+app.use('/db', express.static(`${process.cwd()}/db`));
 
 app.use('/admin', adminRoutes);
 
