@@ -1,150 +1,300 @@
-html {
-    text-align: center;
-    display: flex;
-    flex-direction: column;
+/* html {
+ width: 100%;
+ height: 100%;
+ overflow: hidden;
+} */
+
+body {
+  /* width: 100%;
+  height: 100%; */
+  padding: 0;
+  margin: 0;
+  background-image: url('../public/background-shoul.jpg');
+  background-size: cover;
+  background-image: no-repeat;
 }
 
-body
+
+main
 {
-    width: 100%;
-    margin-left: auto;
-    margin-right: auto;
+  width: 100%;
+  height: 100%;
 }
 
-h1
+/*  CSS GRID  */
+
+::-webkit-scrollbar {
+  display: none;
+  }
+
+.grid-container {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-template-rows: 300px 300px;
+  /* background-color: #2196f3; */
+  margin: 10px;
+  padding: 10px;
+}
+.grid-item {
+  background-color: rgba(255, 255, 255, 0.8);
+  /* border: 1px solid rgba(0, 0, 0, 0.8); */
+  padding: 10px;
+  font-size: 30px;
+  /* text-align: center; */
+  overflow: scroll;
+  scrollbar-width: none;
+}
+
+/*  */
+
+h1 {
+  border: 1px solid black;
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+legend {
+  font-size: xx-large;
+  color: blue;
+}
+
+fieldset {
+  width: 100%;
+  height: 100%;
+}
+
+/* FORM SHABAT */
+
+#formShabat{
+  width: 80%;
+  height: 80%;
+  margin: 5%;
+  margin-top: 0px;
+}
+
+#formShabat .zman {
+  color: black;
+  font-size: xx-large;
+  margin-bottom: -36px;
+}
+
+
+.zman.shirAshirim
 {
-    border: 1px solid black;
-    width: 100%;
-    margin-right: auto;
-    margin-left: auto;
-
+  margin-top: -10px;
 }
 
-iframe
-{
-    margin-top: 10px;
+/* FORM CHOL */
+
+#formChol{
+  width: 80%;
+  height: 80%;
+  margin: 5%;
+  margin-top: 0px;
+  overflow:visible;
 }
 
-legend 
-{
-    font-size: xx-large;
-    color: blue;
+#formChol .zman {
+  color: black;
+  font-size: xx-large;
+  margin-bottom: -27px;
 }
+
+/* form chol et shabat */
 
 .zman
 {
-    color: black;
-    font-size: xx-large;
+  margin-left: auto;
+  margin-right: auto;
+  width: 60%;
 }
 
-input[type=submit]
+.zman label
 {
-    background-color: red;
-    padding: 5px;
-    border-radius: 10px;
+  border: 1px solid yellow;
 }
 
-input[type=submit]:hover
+.zman input
 {
-    background-color: green;
-    color: white;
+  width: 70px;
+  border: 1px solid red;
+  float: left;
+  position: relative;
+  top: 10px;
 }
 
-.pdf
+.btn-submit-zman
 {
-    margin-top: 20px;
+  position: relative;
+  bottom: -15px;
+  right: 40%;
+}
+
+/* FORM PDF */
+
+input[type="file" i] {
+  display: none;
+}
+
+#fieldset-pdf{
+  width: 100%;
+  height: 100%;
+}
+
+.allForm {
+  /* margin-right: auto;
+  margin-left: auto; */
+  margin: 5%;
+  margin-top: 0px;
+  width: 80%;
+  height: 80%;
+  /* text-align: right; */
+}
+
+.label-image {
+  padding: 1px 10px;
+  border: 1px solid grey;
+  border-radius: 5px;
+  background-color: rgb(240, 240, 240);
+  cursor: pointer;
+}
+
+.label-image:hover {
+  background-color: rgb(200, 200, 200);
+}
+
+.image {
+  font-weight: bold;
+  font-size: large;
+}
+
+#name-image-modal {
+  color: red;
+  position: absolute;
+  left: 5px;
+  top: 5px;
+  font-style: italic;
+  font-weight: bold;
+}
+
+.sec-interval {
+  text-align: center;
+  font-weight: bold;
+  font-size: 0.8em;
+}
+
+.sec-interval.sec-interval{
+  position: relative;
+  height: 20px;
+}
+
+.image-name {
+  font-size: small;
+}
+
+.essai {
+  position: relative;
+  top: 5px;
+  display: inline-block;
+  width: 140px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.checkbox {
+  position: relative;
+  top: 2px;
 }
 
 
 
-img
-{
-    max-width: 100%;
-    height: 30px;
+
+
+
+
+
+
+/* SUBMIT BUTTON */
+
+
+
+input {
+  cursor: pointer;
 }
 
-fieldset
-{
-    margin-top: 10px;
+input[type="submit"] {
+  background-color: red;
+  padding: 5px;
+  width: 70px;
+  border-radius: 10px;
+  /* margin-right: 40%; */
 }
 
-.formPDF.one
-{
-  margin-top: 10px;
+input[type="submit"]:hover {
+  background-color: green;
+  color: white;
 }
 
-.formPDF
-{
-  margin-bottom: 10px;
-}
+/* IMG VALIDATOR & ERROR */
 
+img {
+  max-width: 100%;
+  height: 30px;
+}
 
 /* LOADER 2 */
 
-#loader-2 span{
-    display: inline-block;
-    width: 10px;
-    height: 10px;
-    border-radius: 100%;
-    background-color: #3498db;
-    margin: 35px 5px;
-  }
-  
-  #loader-2 span:nth-child(1){
-    animation: bounce 1s ease-in-out infinite;
-  }
-  
-  #loader-2 span:nth-child(2){
-    animation: bounce 1s ease-in-out 0.33s infinite;
-  }
-  
-  #loader-2 span:nth-child(3){
-    animation: bounce 1s ease-in-out 0.66s infinite;
-  }
-  
-  @keyframes bounce{
-    0%, 75%, 100%{
-      -webkit-transform: translateY(0);
-      -ms-transform: translateY(0);
-      -o-transform: translateY(0);
-      transform: translateY(0);
-    }
-  
-    25%{
-      -webkit-transform: translateY(-10px);
-      -ms-transform: translateY(-10px);
-      -o-transform: translateY(-10px);
-      transform: translateY(-10px);
-    }
+#loader-2 span {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 100%;
+  background-color: #3498db;
+  margin: 35px 5px;
+}
+
+#loader-2 span:nth-child(1) {
+  animation: bounce 1s ease-in-out infinite;
+}
+
+#loader-2 span:nth-child(2) {
+  animation: bounce 1s ease-in-out 0.33s infinite;
+}
+
+#loader-2 span:nth-child(3) {
+  animation: bounce 1s ease-in-out 0.66s infinite;
+}
+
+@keyframes bounce {
+  0%,
+  75%,
+  100% {
+    -webkit-transform: translateY(0);
+    -ms-transform: translateY(0);
+    -o-transform: translateY(0);
+    transform: translateY(0);
   }
 
-  .loader.pdf
-  {
-    display: none;
+  25% {
+    -webkit-transform: translateY(-10px);
+    -ms-transform: translateY(-10px);
+    -o-transform: translateY(-10px);
+    transform: translateY(-10px);
   }
+}
 
-  input
-  {
-    cursor: pointer;
-  }
-  
-
-  .allForm
-  {
-    width: fit-content;
-    margin: auto;
-    text-align: right;
-  }
-
-
+.loader.pdf {
+  display: none;
+}
 
 /* MODAL */
-
 
 .modal-btn {
   width: 20px;
   height: 13px;
-  background-image: url('../public/eye-icon2.png');
+  background-image: url("../public/eye-icon2.png");
   border: 1px solid grey;
   border-radius: 5px;
   background-size: cover;
@@ -187,22 +337,20 @@ fieldset
   /* max-width: 500px;
   min-width: 300px; */
   padding: 30px;
-  background-image: url('http://localhost:3000/images/imageAffiche1.jpg');
+  background-image: url("http://localhost:3000/images/imageAffiche1.jpg");
   background-size: cover;
   border-radius: 5px;
   position: absolute;
   top: 40%;
   left: 50%;
   transform: translate(-50%, calc(-50% - 50px));
-  transition: opacity 0.4s ease-out,
-  transform 0.4s ease-out;
+  transition: opacity 0.4s ease-out, transform 0.4s ease-out;
 }
 
 .modal-container.active .modal {
   opacity: 1;
   transform: translate(-50%, -50%);
-  transition: opacity 0.4s 0.2s ease-out,
-  transform 0.4s 0.2s ease-out;
+  transition: opacity 0.4s 0.2s ease-out, transform 0.4s 0.2s ease-out;
 }
 
 .close-modal {
@@ -227,70 +375,51 @@ fieldset
   margin-bottom: 5px;
 }
 
+/* IMAGE DIAPORAMA */
 
-
-/* type file */
-
-input[type="file" i] 
+.box-img
 {
-  display: none;
-}
-
-.label-image
-{
-  padding: 1px 10px;
-  border: 1px solid grey;
-  border-radius: 5px;
-  background-color: rgb(240, 240, 240);
-  cursor: pointer;
-}
-
-.label-image:hover
-{
-  background-color: rgb(200, 200, 200);
-}
-
-.image
-{
-  font-weight: bold;
-  font-size: large;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 5%;
+  width: 80%;
+  height: 80%;
 }
 
 
-#name-image-modal {
-  color: red;
+@keyframes fondu {
+	0%   {opacity: 0}
+	100% {opacity: 1;}
+  }
+
+
+.image-diaporama
+{
   position: absolute;
-  left: 5px;
-  top: 5px;
-  font-style: italic;
-  font-weight: bold;
+  max-width: 100%;
+  height: 200px;
+  animation-name: fondu ;
+	animation-duration: 3s;
 }
 
-.sec-interval
+.image2-diaporama
 {
-  text-align: center;
-  font-weight: bold;
+  position: absolute;
+  max-width: 100%;
+  height: 200px;
+  animation-name: fondu ;
+	animation-duration: 3s;
 }
 
-
-/* .image-name
+/* .myImg
 {
-  text-overflow: ellipsis;
-} */
-
-.essai
-{
-  position: relative;
-  top: 5px;
-  display: inline-block;
-  width: 140px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+	position: absolute;
+	bottom: 105px;
+	left: 105px;
+	max-width: 100%;
+	height:410px;
+	box-shadow: 3px 3px 3px 3px black;
+	animation-name: fondu ;
+	animation-duration: 6S;
 }
-
-.checkbox
-{
-  position: relative;
-  top: 2px;
-}
+ */

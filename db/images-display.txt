@@ -1,8 +1,8 @@
 {
   "imageDisplay": [
-    "מנחת שלום.jpg",
-    "brachot hai sagroun.jpg",
-    "LOREM IPSUM.pdf",
-    "מנחת שלום.jpg"
+    "test-image1.pdf",
+    "test-image2.pdf",
+    "test-image3.pdf",
+    "test-image4.pdf"
   ]
 }

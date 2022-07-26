@@ -74,7 +74,6 @@ const displayNameOfFile = async () => {
 
 displayNameOfFile();
 
-
 // Affichage des checkboxs a partir de la db
 
 let checkbox1 = document.querySelector("#image1");
@@ -87,12 +86,12 @@ const displayCheckbox = async () => {
   let objectCheckbox = await fetch("http://localhost:3000/db/checkbox.txt")
     .then((data) => data.json())
     .then((data) => {
-      console.log(data);
-     checkbox1.checked = data.image1;
-     checkbox2.checked = data.image2;
-     checkbox3.checked = data.image3;
-     checkbox4.checked = data.image4;
-     secInterval.value = data.secInterval;
+      // console.log(data);
+      checkbox1.checked = data.image1;
+      checkbox2.checked = data.image2;
+      checkbox3.checked = data.image3;
+      checkbox4.checked = data.image4;
+      secInterval.value = data.secInterval;
     })
     .catch((err) => {
       console.error(err);
@@ -255,7 +254,7 @@ function addEvent(formPDF, loaderPdf, inputFile) {
 
 function allPDF(files, loaderPdf) {
   let formParent = loaderPdf.parentNode;
-  console.log(formParent);
+  // console.log(formParent);
   files = document.getElementById(files);
   // console.log(files.files[0]);
   const formData = new FormData();
@@ -289,7 +288,7 @@ function allPDF(files, loaderPdf) {
 // CHECKBOX
 
 let checkboxs = document.querySelectorAll(".checkbox");
-console.log(checkboxs);
+// console.log(checkboxs);
 
 checkboxs.forEach((e) => {
   e.addEventListener("change", (e) => {
@@ -349,3 +348,221 @@ function toggleModal(e) {
   } catch (error) {}
   modalContainer.classList.toggle("active");
 }
+
+// DIAPORAMA
+
+const fondu = () => {
+  document.querySelector(".image-diaporama").style.animationName = "fondu";
+  document.querySelector(".image-diaporama").style.animationDuration = "3s";
+};
+
+const coucou = async () => {
+  let arrayImageRecup = [];
+  let secondeInterval = 2000;
+
+  const recupereInfoDiaporama = async () => {
+    fetch("http://localhost:3000/db/checkbox.txt")
+      .then((res) => res.json())
+      .then((data) => {
+        // console.log(data);
+        if (
+          data.image1 === false &&
+          data.image2 == false &&
+          data.image3 == false &&
+          data.image4 == false
+        ) {
+          console.log("il ya aucune image de valClassNameer");
+          return;
+        }
+        if (data.secInterval == "") {
+          console.log(
+            "ya pas de seconde d'interval personnalisé - seconde interval par default 2000"
+          );
+        }
+        if (data.secInterval != "") {
+          console.log(secInterval);
+          secondeInterval = data.secInterval + "000";
+          console.log("milisecondes interval = " + secondeInterval);
+        }
+        if (data.image1 === true) {
+          console.log("true1");
+          arrayImageRecup.push(
+            "http://localhost:3000/images/imageAffiche1.jpg"
+          );
+        }
+        if (data.image2 === true) {
+          console.log("true2");
+          arrayImageRecup.push(
+            "http://localhost:3000/images/imageAffiche2.jpg"
+          );
+        }
+        if (data.image3 === true) {
+          console.log("true3");
+          arrayImageRecup.push(
+            "http://localhost:3000/images/imageAffiche3.jpg"
+          );
+        }
+        if (data.image4 === true) {
+          console.log("true4");
+          arrayImageRecup.push(
+            "http://localhost:3000/images/imageAffiche4.jpg"
+          );
+        }
+        console.log("arrayImageRecup", arrayImageRecup);
+      })
+      .catch((err) => console.error(err));
+  };
+
+  recupereInfoDiaporama();
+
+  const affich1 = () => {
+    let image = document.querySelector(".image-diaporama");
+    let theImg = document.querySelector(".box-img");
+    let newImg = document.createElement("img");
+    setTimeout(() => {
+      if (
+        arrayImageRecup[0] &&
+        arrayImageRecup[1] &&
+        arrayImageRecup[2] &&
+        arrayImageRecup[3]
+      ) {
+        const interval4 = () => {
+          image.remove();
+          let newImg = document.createElement("img");
+          newImg.className = "image-diaporama";
+          theImg.appendChild(newImg);
+          newImg.src = arrayImageRecup[0];
+          console.log("pdf1");
+          setTimeout(() => {
+            image.remove();
+            let newImg = document.createElement("img");
+            newImg.className = "image-diaporama";
+            theImg.appendChild(newImg);
+            newImg.src = arrayImageRecup[1];
+            console.log("pdf2");
+          }, secondeInterval);
+          setTimeout(() => {
+            image.remove();
+            let newImg = document.createElement("img");
+            newImg.className = "image-diaporama";
+            theImg.appendChild(newImg);
+            newImg.src = arrayImageRecup[2];
+            console.log("pdf3");
+          }, secondeInterval * 2);
+          setTimeout(() => {
+            image.remove();
+            let newImg = document.createElement("img");
+            newImg.className = "image-diaporama";
+            theImg.appendChild(newImg);
+            newImg.src = arrayImageRecup[3];
+            console.log("pdf4");
+          }, secondeInterval * 3);
+        };
+        interval4();
+        setInterval(() => {
+          interval4();
+        }, secondeInterval * 4);
+      } else if (
+        arrayImageRecup[0] &&
+        arrayImageRecup[1] &&
+        arrayImageRecup[2]
+      ) {
+        const interval3 = () => {
+          if(image) {image.remove();}
+          let newImg = document.createElement("img");
+          newImg.className = "image-diaporama";
+          theImg.appendChild(newImg);
+          newImg.src = arrayImageRecup[0];
+          console.log("pdf1");
+          setTimeout(() => {
+            if(image) {image.remove();}
+            let newImg = document.createElement("img");
+            newImg.className = "image-diaporama";
+            theImg.appendChild(newImg);
+            newImg.src = arrayImageRecup[1];
+            console.log("pdf2");
+          }, secondeInterval);
+          setTimeout(() => {
+            if(image) {image.remove();}
+            let newImg = document.createElement("img");
+            newImg.className = "image-diaporama";
+            theImg.appendChild(newImg);
+            newImg.src = arrayImageRecup[2];
+            console.log("pdf3");
+          }, secondeInterval * 2);
+        };
+        interval3();
+        setInterval(() => {
+          theImg.children[0].remove();
+          interval3();
+        }, secondeInterval * 3);
+      } else if (arrayImageRecup[0] && arrayImageRecup[1]) {
+        console.log("2 images");
+        let count2 = 0;
+        const interval2 = () => {
+          count2 ++;
+          let newImg = document.createElement("img");
+          newImg.className = "image-diaporama";
+          theImg.appendChild(newImg);
+          newImg.src = arrayImageRecup[0];
+          console.log("image1");
+          setTimeout(() => {
+            let newImg = document.createElement("img");
+            newImg.className = "image2-diaporama";
+            theImg.appendChild(newImg);
+            newImg.src = arrayImageRecup[1];
+            console.log("image2");
+          }, secondeInterval);
+        };
+        interval2();
+        setInterval(() => {
+          console.log('count2', count2);
+          removeOldImages(theImg);
+          interval2();
+        }, secondeInterval * 2);
+      } else if (arrayImageRecup[0]) {
+        document.querySelector(".image-diaporama").src = arrayImageRecup[0];
+        console.log("pdf1");
+      } else {
+        console.log("erreur affichage image dans le setInterval");
+      }
+    }, 1000);
+  };
+  affich1();
+};
+
+coucou();
+
+
+
+
+
+function removeOldImages(theImg) {
+  let liste = theImg.childNodes;
+  let liste2 = [];
+  liste.forEach(element => {
+    liste2.push(element);
+  });
+  for (let i = 0; i < liste2.length - 1; i++) {
+    const element = liste2[i];
+    console.log('for = ', element);
+    element.remove();
+  }
+}
+    // setTimeout(() => {
+          //   image.remove()
+          //   let newImg = document.createElement('img');
+          //   newImg.className = 'image-diaporama';
+          //   theImg.appendChild(newImg)
+          //   newImg.src = arrayImageRecup[1];
+          //   console.log("pdf2");
+          // }, secondeInterval);
+
+// setTimeout(() => {
+//   let parent = image.parentNode;
+//   console.log(parent)
+//   let deletedImage= parent.removeChild(image);
+//   // let deletedImage = image.remove();
+//   console.log(deletedImage);
+//   theImg.appendChild(deletedImage);
+// }, 6000);
