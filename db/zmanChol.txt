@@ -1,0 +1,5 @@
+{
+  "shacharitChol": "00:04",
+  "minchaChol": "07:09",
+  "arvitChol": "00:00"
+}

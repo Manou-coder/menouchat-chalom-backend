@@ -46,22 +46,21 @@ const displayZmanShabat = async () => {
 
 displayZmanShabat();
 
-// Affichage des nom de fichier a partir de la db
+// Affichage des nom de photos a partir de la db
 
-let imageName1 = document.querySelector('.image-name.one');
-let imageName2 = document.querySelector('.image-name.two');
-let imageName3 = document.querySelector('.image-name.three');
-let imageName4 = document.querySelector('.image-name.four');
-
+let imageName1 = document.querySelector(".image-name.one");
+let imageName2 = document.querySelector(".image-name.two");
+let imageName3 = document.querySelector(".image-name.three");
+let imageName4 = document.querySelector(".image-name.four");
 
 const displayNameOfFile = async () => {
   let objectImage = await fetch("http://localhost:3000/db/images-display.txt")
     .then((data) => data.json())
     .then((data) => {
-        console.log(data);
+      // console.log(data);
       let imageDisplay = data.imageDisplay;
-      console.log(imageDisplay[0]);
-      console.log(file1);
+      // console.log(imageDisplay[0]);
+      // console.log(file1);
       imageName1.innerHTML = imageDisplay[0];
       imageName2.innerHTML = imageDisplay[1];
       imageName3.innerHTML = imageDisplay[2];
@@ -75,6 +74,33 @@ const displayNameOfFile = async () => {
 
 displayNameOfFile();
 
+
+// Affichage des checkboxs a partir de la db
+
+let checkbox1 = document.querySelector("#image1");
+let checkbox2 = document.querySelector("#image2");
+let checkbox3 = document.querySelector("#image3");
+let checkbox4 = document.querySelector("#image4");
+let secInterval = document.querySelector(".sec-interval.sec");
+
+const displayCheckbox = async () => {
+  let objectCheckbox = await fetch("http://localhost:3000/db/checkbox.txt")
+    .then((data) => data.json())
+    .then((data) => {
+      console.log(data);
+     checkbox1.checked = data.image1;
+     checkbox2.checked = data.image2;
+     checkbox3.checked = data.image3;
+     checkbox4.checked = data.image4;
+     secInterval.value = data.secInterval;
+    })
+    .catch((err) => {
+      console.error(err);
+      return;
+    });
+};
+
+displayCheckbox();
 
 // function commune pour enregistrer les zmanim dans la DB
 
@@ -189,21 +215,16 @@ formShabat.addEventListener("submit", async (e) => {
 
 // FORMULAIRE ENVOI DES PDF
 
-
-
-let label = document.querySelectorAll('.label-image');
+let label = document.querySelectorAll(".label-image");
 // console.log(label);
 
-label.forEach(label => {
+label.forEach((label) => {
   // console.log(label.parentNode.children);
-  label.addEventListener('click', (e) => {
+  label.addEventListener("click", (e) => {
     e.preventDefault();
-    label.parentNode.children[2].click()
-  })
-  
-})
-
-
+    label.parentNode.children[2].click();
+  });
+});
 
 const formPDF1 = document.querySelector(".formPDF.one");
 // console.log(formPDF1);
@@ -255,7 +276,7 @@ function allPDF(files, loaderPdf) {
         erreur(loaderPdf);
       } else {
         validator(loaderPdf);
-        formParent.children[3].innerHTML= files.files[0].name;
+        formParent.children[3].innerHTML = files.files[0].name;
       }
     })
     .catch((err) => {
@@ -265,39 +286,26 @@ function allPDF(files, loaderPdf) {
     });
 }
 
-// let checkboxs = document.querySelectorAll(".checkbox");
+// CHECKBOX
 
-// checkboxs.forEach((e) => {
-//   e.removEentListener("change", (e) => {
-//     e.preventDefault();
-//     loaderFunc(loaderPdf);
-//     allPDF(idOfInputFile, loaderPdf);
-//   });
-// });
+let checkboxs = document.querySelectorAll(".checkbox");
+console.log(checkboxs);
 
-// let checkbox1 = document.querySelector('#image1');
-// console.log(checkbox1);
+checkboxs.forEach((e) => {
+  e.addEventListener("change", (e) => {
+    e.preventDefault();
+    displayFormImg();
+  });
+});
 
-// checkbox1.addEventListener('click', (e) => {
-//   console.log('parent', checkbox1.parentNode);
-//   let el = checkbox1.nextElementSibling
-//   console.log(el);
-//   el = el.remove()
-//   // document.createElement(el)
-//   console.log(el);
-// })
-
-// let checkbox = document.querySelector('#image1');
-// console.log(checkbox);
-
-// let form = document.querySelector('#form');
-// console.log(form);
-
-let formImg = document.querySelector("#formImg");
-// console.log(formImg);
+secInterval.addEventListener("change", (e) => {
+  e.preventDefault();
+  displayFormImg();
+});
 
 const displayFormImg = async () => {
-  let formImg = await fetch("http://localhost:3000/admin/displayImg", {
+  // console.log('coucou');
+  let formImg = await fetch("http://localhost:3000/admin/checkbox", {
     method: "POST",
     headers: {
       Accept: "application/json",
@@ -308,16 +316,15 @@ const displayFormImg = async () => {
       image2: document.querySelector("#image2").checked,
       image3: document.querySelector("#image3").checked,
       image4: document.querySelector("#image4").checked,
-      secInterval: document.querySelector("#secInterval").value,
+      secInterval: secInterval.value,
     }),
-  });
+  })
+    .then((res) => {
+      console.log(res);
+      return res.json();
+    })
+    .then((res) => console.log(res));
 };
-
-formImg.addEventListener("submit", (e) => {
-  e.preventDefault();
-  // console.log(e);
-  displayFormImg();
-});
 
 // MODAL
 
@@ -339,7 +346,6 @@ function toggleModal(e) {
     // console.log("nameOfImage", nameOfImage);
     modal.style.backgroundImage = `url('http://localhost:3000/images/imageAffiche${nameOfImage}.jpg')`;
     modal.children[1].innerHTML = e.target.parentNode.children[3].innerHTML;
-  } catch (error) {
-  }
+  } catch (error) {}
   modalContainer.classList.toggle("active");
 }

@@ -123,28 +123,11 @@ fieldset
     display: none;
   }
 
-  /* .loader.pdf img 
-  {
-    margin-bottom: 5px;
-  } */
-
   input
   {
     cursor: pointer;
   }
   
-/* 
-  .coucou
-  {
-    display: inline;
-  } */
-/* 
-  #image1
-  {
-    position: absolute;
-    bottom: -90px;
-    right: 134px;
-  } */
 
   .allForm
   {
@@ -153,38 +136,12 @@ fieldset
     text-align: right;
   }
 
-  .allCheckboxs
-  {
-    position: relative;
-    width: fit-content;
-    margin: auto;
-    display: flex;
-    flex-direction: column;
-    right: -154px;
-    top: -33px;
-  }
-
-  .checkbox{
-    margin-bottom: -48px;
-  }
-
-  /* input.checkbox
-  {
-    margin: 4px;
-  } */
-
 
 
 /* MODAL */
 
 
 .modal-btn {
-  /* padding: 10px 14px;
-  font-size: 18px;
-  margin: 100px auto;
-  display: block;
-  min-width: 150px;
-  cursor: pointer; */
   width: 20px;
   height: 13px;
   background-image: url('../public/eye-icon2.png');
@@ -192,7 +149,7 @@ fieldset
   border-radius: 5px;
   background-size: cover;
   cursor: pointer;
-  top: -2px;
+  top: 0px;
   position: relative;
 }
 
@@ -299,12 +256,6 @@ input[type="file" i]
   font-size: large;
 }
 
-/* #name-image-modal
-{
-  color: red;
-  margin-left: 0px;
-} */
-
 
 #name-image-modal {
   color: red;
@@ -319,4 +270,27 @@ input[type="file" i]
 {
   text-align: center;
   font-weight: bold;
+}
+
+
+/* .image-name
+{
+  text-overflow: ellipsis;
+} */
+
+.essai
+{
+  position: relative;
+  top: 5px;
+  display: inline-block;
+  width: 140px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.checkbox
+{
+  position: relative;
+  top: 2px;
 }

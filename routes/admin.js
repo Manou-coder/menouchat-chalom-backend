@@ -14,4 +14,6 @@ router.post("/zman-shabat", adminCtrl.saveZmanShbt);
 
 router.post("/upload_pdf", multerConfig, gmshellConfig, adminCtrl.savePdf);
 
+router.post("/checkbox", adminCtrl.saveCheckbox);
+
 module.exports = router;
