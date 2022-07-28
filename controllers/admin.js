@@ -1,4 +1,5 @@
 const fs = require("fs");
+const fetch = require("node-fetch");
 
 exports.afficheHtml = (req, res, next) => {
   res.sendFile(process.cwd() + "/views/index.html");
@@ -36,4 +37,17 @@ exports.saveCheckbox = (req, res, next) => {
   checkbox = JSON.stringify(checkbox, null, 2);
   fs.writeFileSync("./db/checkbox.txt", checkbox);
   res.json({ message: "Successfully uploaded files", body: req.body });
+};
+
+exports.saveReload = (req, res, next) => {
+  let reloadDB = fs.readFileSync('./db/reload.txt');
+  reloadDB = JSON.parse(reloadDB);
+  console.log('reloadDB', reloadDB);
+  let checkReload = reloadDB.reload;
+  // console.log(checkReload);
+  let inverse = {reload: !checkReload}
+  console.log('inverse', inverse);
+  inverse = JSON.stringify(inverse, null, 2);
+  fs.writeFileSync('./db/reload.txt', inverse)
+  res.json({ message: "Successfully reload", inverse });
 };

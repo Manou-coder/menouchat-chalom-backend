@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" dir="rtl">
+<html lang="en" dir="rtl" >
 
 <head>
   <meta charset="UTF-8" />
@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="../public/style.css" />
   <title>changement d'horaires</title>
 </head>
-<body>
+<body  style="display: none;"  onload="document.querySelector('body').style.display = 'block'">
   <main>
     <h1>הגדרות הלוח</h1>
     <div class="grid-container">
@@ -152,17 +152,15 @@
       </div>
     </div>
   </main>
-</body>
+  <div class="modal-container">
 
-<div class="modal-container">
-
-  <div class="overlay modal-trigger"></div>
-
-  <div class="modal" role="dialog" aria-labelledby="modalTitle" aria-describedby="dialogDesc">
-    <button aria-label="close modal" class="close-modal modal-trigger">X</button>
-    <span id="name-image-modal"></span>
+    <div class="overlay modal-trigger"></div>
+  
+    <div class="modal" role="dialog" aria-labelledby="modalTitle" aria-describedby="dialogDesc">
+      <button aria-label="close modal" class="close-modal modal-trigger">X</button>
+      <span id="name-image-modal"></span>
+    </div>
   </div>
-</div>
-<script src="../public/myApp.js"></script>
-
+</body>
+  <script src="../public/myApp.js"></script>
 </html>

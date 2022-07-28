@@ -19,7 +19,7 @@ router.get('/pdf3', zmanCtrl.envoyerImg3)
 
 router.get('/pdf4', zmanCtrl.envoyerImg4)
 
-// router.get('/get-checkbox', zmanCtrl.envoyerImg4)
+router.get('/get-reload', zmanCtrl.sendReload)
 
 
 module.exports = router;

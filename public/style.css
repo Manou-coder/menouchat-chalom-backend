@@ -1,12 +1,12 @@
-/* html {
- width: 100%;
- height: 100%;
- overflow: hidden;
-} */
+html
+{
+  height: 100%;
+  /* border: 3px solid red; */
+  /* overflow: hidden; */
+}
 
 body {
-  /* width: 100%;
-  height: 100%; */
+  height: 100%;
   padding: 0;
   margin: 0;
   background-image: url('../public/background-shoul.jpg');
@@ -14,10 +14,9 @@ body {
   background-image: no-repeat;
 }
 
-
 main
 {
-  width: 100%;
+  /* width: 100%; */
   height: 100%;
 }
 
@@ -30,18 +29,18 @@ main
 .grid-container {
   display: grid;
   grid-template-columns: 50% 50%;
-  grid-template-rows: 300px 300px;
-  /* background-color: #2196f3; */
+  grid-template-rows: 50% 50%;
   margin: 10px;
   padding: 10px;
+  /* width: 100%; */
+  height: 100%;
 }
 .grid-item {
   background-color: rgba(255, 255, 255, 0.8);
   /* border: 1px solid rgba(0, 0, 0, 0.8); */
   padding: 10px;
   font-size: 30px;
-  /* text-align: center; */
-  overflow: scroll;
+  overflow: hidden;
   scrollbar-width: none;
 }
 
@@ -110,10 +109,10 @@ fieldset {
   width: 60%;
 }
 
-.zman label
+/* .zman label
 {
   border: 1px solid yellow;
-}
+} */
 
 .zman input
 {
@@ -158,6 +157,7 @@ input[type="file" i] {
   border-radius: 5px;
   background-color: rgb(240, 240, 240);
   cursor: pointer;
+  font-size: 0.8em;
 }
 
 .label-image:hover {
@@ -379,11 +379,12 @@ img {
 
 .box-img
 {
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 5%;
+  margin: auto;
+  margin-top: 3%;
+  border: 1px solid black;
   width: 80%;
   height: 80%;
+  position: relative;
 }
 
 
@@ -396,30 +397,12 @@ img {
 .image-diaporama
 {
   position: absolute;
-  max-width: 100%;
-  height: 200px;
+  width: 100%;
+  height: 100%;
+  /* top: 0;
+  left: 0; */
+  /* margin-left: 50%;
+  margin-right: 50%; */
   animation-name: fondu ;
 	animation-duration: 3s;
 }
-
-.image2-diaporama
-{
-  position: absolute;
-  max-width: 100%;
-  height: 200px;
-  animation-name: fondu ;
-	animation-duration: 3s;
-}
-
-/* .myImg
-{
-	position: absolute;
-	bottom: 105px;
-	left: 105px;
-	max-width: 100%;
-	height:410px;
-	box-shadow: 3px 3px 3px 3px black;
-	animation-name: fondu ;
-	animation-duration: 6S;
-}
- */

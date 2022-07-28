@@ -1,7 +1,7 @@
 {
   "image1": true,
   "image2": true,
-  "image3": false,
-  "image4": false,
-  "secInterval": "6"
+  "image3": true,
+  "image4": true,
+  "secInterval": "3"
 }

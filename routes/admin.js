@@ -16,4 +16,6 @@ router.post("/upload_pdf", multerConfig, gmshellConfig, adminCtrl.savePdf);
 
 router.post("/checkbox", adminCtrl.saveCheckbox);
 
+router.post("/reload", adminCtrl.saveReload);
+
 module.exports = router;

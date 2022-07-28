@@ -47,50 +47,15 @@ app.get('/admin/getdisplayImg', (req, res, next) => {
     res.json(IMG)
 })
 
-// ESSAI MULTER
+let verif = true;
 
-const multer = require("multer");
-
-const MIME_TYPES = {
-    'image/jpg': 'jpg',
-    'image/jpeg': 'jpg',
-    'image/png': 'png',
-    'application/pdf': 'pdf'
-  };
-  
-  const storage = multer.diskStorage({
-    destination: (req, file, callback) => {
-      callback(null, 'files1');
-    },
-    filename: (req, file, callback) => {
-      const name = file.originalname.split(' ').join('_');
-      const extension = MIME_TYPES[file.mimetype];
-      callback(null, name + Date.now() + '.' + extension);
+app.get('/admin/reload?', (req, res, next) => {
+//   console.log(req.query);
+    function inverse() {
+        return !verif;
     }
-  });
-
-
-//   app.post("/admin/pdf1", multer({storage: storage}).array('files'), uploadFiles);
-
-    function uploadFiles(req, res) {
-        console.log(req.body);
-        console.log(req.files);
-        res.json({ message: "Successfully uploaded files" });
-    }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  res.json({reload: inverse()});
+})
 
 
 module.exports = app;

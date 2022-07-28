@@ -1,45 +1,59 @@
-const {zmanJerusalem} = require('../cities/zmanim');
-const zmanVille = require('../cities/zmanim');
-const zmanShbt = require('./admin');
-const zmanAdmin = require('./admin');
-const {eventsByDate} = require('../hebcal3');
+const { zmanJerusalem } = require("../cities/zmanim");
+const zmanVille = require("../cities/zmanim");
+const zmanShbt = require("./admin");
+const zmanAdmin = require("./admin");
+const { eventsByDate } = require("../hebcal3");
+const fs = require("fs");
 
 exports.envoyerZmanDuJour = (req, res, next) => {
-    res.json(zmanJerusalem());
+  res.json(zmanJerusalem());
 };
 
 exports.envoyerZmanChol = (req, res, next) => {
-    if (zmanAdmin.zmanChol === undefined) {
-        res.json({error: "Les zmanim ne sont pas definis. Veuillez vous rendre dans la page de modification pour les définir."});
-    } else {
+  if (zmanAdmin.zmanChol === undefined) {
+    res.json({
+      error:
+        "Les zmanim ne sont pas definis. Veuillez vous rendre dans la page de modification pour les définir.",
+    });
+  } else {
     res.json(zmanAdmin.zmanChol);
-    }
+  }
 };
 
 exports.envoyerZmanShbt = (req, res, next) => {
-    if (zmanAdmin.zmanShbt === undefined) {
-        res.json({error: "Les zmanim ne sont pas definis. Veuillez vous rendre dans la page de modification pour les définir."});
-    } else {
-        res.json(zmanAdmin.zmanShbt);
-    }
+  if (zmanAdmin.zmanShbt === undefined) {
+    res.json({
+      error:
+        "Les zmanim ne sont pas definis. Veuillez vous rendre dans la page de modification pour les définir.",
+    });
+  } else {
+    res.json(zmanAdmin.zmanShbt);
+  }
 };
 
 exports.envoyerInfoDuJour = (req, res, next) => {
-    res.json(eventsByDate());
+  res.json(eventsByDate());
 };
 
 exports.envoyerImg1 = (req, res, next) => {
-    res.json({urlImage: "images/imageAffiche1.jpg"});
+  res.json({ urlImage: "images/imageAffiche1.jpg" });
 };
 
 exports.envoyerImg2 = (req, res, next) => {
-    res.json({urlImage: "images/imageAffiche2.jpg"});
+  res.json({ urlImage: "images/imageAffiche2.jpg" });
 };
 
 exports.envoyerImg3 = (req, res, next) => {
-    res.json({urlImage: "images/imageAffiche3.jpg"});
+  res.json({ urlImage: "images/imageAffiche3.jpg" });
 };
 
 exports.envoyerImg4 = (req, res, next) => {
-    res.json({urlImage: "images/imageAffiche4.jpg"});
+  res.json({ urlImage: "images/imageAffiche4.jpg" });
+};
+
+exports.sendReload = (req, res, next) => {
+  let reloadDB = fs.readFileSync("./db/reload.txt");
+  reloadDB = JSON.parse(reloadDB);
+//   console.log("reloadDB", reloadDB);
+  res.json(reloadDB);
 };
